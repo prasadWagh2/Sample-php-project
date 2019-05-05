@@ -18,7 +18,7 @@ pipeline {
       }
     }
   
-  }
+  
   stage("Create new tag") {
          when {
                expression {env.BRANCH_NAME == 'master'}
@@ -47,5 +47,5 @@ pipeline {
             }
 			
         }
-  
+  }
 }
