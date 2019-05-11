@@ -15,7 +15,7 @@ pipeline {
 //       sh '/bin/phpunit ${WORKSPACE}/src'
 //     }
 //   }
- stage("Create new tag") {
+ stage("Create new tag for master") {
          when {
                expression {env.BRANCH_NAME == 'master'}
             }                     
@@ -42,6 +42,13 @@ pipeline {
               }
                 
             }
+        }
+		
+stage("Create new tag for dev") {
+         when {
+               expression {env.BRANCH_NAME == 'dev'}
+            }                    		
+		
 	    when {
                expression {env.BRANCH_NAME == 'dev' }
             }
@@ -68,8 +75,8 @@ pipeline {
               }
 
             }
-        }
  
+  }
   }
 }
 def getTagversion (String oldtagVersion)
